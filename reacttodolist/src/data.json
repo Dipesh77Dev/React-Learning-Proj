@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name" : "Cricket",
+        "played" : true
+    },
+    {
+        "id": 2,
+        "name" : "Football",
+        "played" : true
+    },
+    {
+        "id": 3,
+        "name" : "Chess",
+        "played" : true
+    },
+    {
+        "id": 4,
+        "name" : "Hockey",
+        "played" : false
+    },
+    {
+        "id": 5,
+        "name" : "Badminton",
+        "played" : true
+    },
+    {
+        "id": 6,
+        "name" : "Carrom",
+        "played" : true
+    },
+    {
+        "id": 7,
+        "name" : "Volleyball",
+        "played" : false
+    },
+    {
+        "id": 8,
+        "name" : "BasketBall",
+        "played" : false
+    },
+    {
+        "id": 9,
+        "name" : "Golf",
+        "played" : false
+    },
+    {
+        "id": 10,
+        "name" : "Rugby",
+        "played" : false
+    }
+]
