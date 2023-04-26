@@ -15,7 +15,7 @@ class Movies extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         {this.state.movies.map((x) => {
           return <div key={x}>{x}</div>;

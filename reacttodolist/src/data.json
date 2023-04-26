@@ -2,51 +2,51 @@
     {
         "id": 1,
         "name" : "Cricket",
-        "played" : true
+        "played" : false
     },
     {
         "id": 2,
         "name" : "Football",
-        "played" : true
+        "played" : false
     },
     {
         "id": 3,
         "name" : "Chess",
-        "played" : true
+        "played" : false
     },
     {
         "id": 4,
         "name" : "Hockey",
-        "played" : false
+        "played" : true
     },
     {
         "id": 5,
         "name" : "Badminton",
-        "played" : true
+        "played" : false
     },
     {
         "id": 6,
         "name" : "Carrom",
-        "played" : true
+        "played" : false
     },
     {
         "id": 7,
         "name" : "Volleyball",
-        "played" : false
+        "played" : true
     },
     {
         "id": 8,
         "name" : "BasketBall",
-        "played" : false
+        "played" : true
     },
     {
         "id": 9,
         "name" : "Golf",
-        "played" : false
+        "played" : true
     },
     {
         "id": 10,
         "name" : "Rugby",
-        "played" : false
+        "played" : true
     }
 ]
