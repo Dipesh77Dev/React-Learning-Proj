@@ -24,3 +24,9 @@ export const resetNumber = () => {
 //         payload: value
 //     }
 // }
+
+export const getUserDemo = () => {
+    return{
+        type: 'GetUserDemo'
+    }
+}

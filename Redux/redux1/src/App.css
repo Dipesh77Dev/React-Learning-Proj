@@ -20,6 +20,20 @@
   text-align: center;
 }
 
+.input1{
+  margin-top: 10%;
+}
+
+.input2{
+  margin-top: 3%;
+}
+
+.logic-hr{
+  border: 1px solid grey;
+  width: 100%;
+  margin-top: 20px;
+}
+
 .logic-buttons{
   /* flex-direction: column; */
   padding: 20px;
