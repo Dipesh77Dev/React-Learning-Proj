@@ -1,0 +1,21 @@
+If we want to implement Redux in our project se we can use Redux toolkit(@reduxjs/toolkit package), rather than using legacy redux.
+
+Redux Toolkit is an updated version of Redux.
+Redux Toolkit(also known as RTK) is used for writing Redux Logic[Redux which take 100 line of code can be decreased to 40-50 line by using redux toolkit].
+Redux Toolkit simplifies our code & eliminates many common Redux mistakes & bugs. 
+
+
+When we work on big project we have to deal with state management, for state management we have -
+1. Hooks( ContextApi, useReducer); 2. Redux; 3. Redux toolkit.
+
+
+For eg(According to props drilling 1 image) -
+If we want to pass data from grandparent to GChild-2 = we had to pass props/data from Grandparent => Parent => child => G-child2..
+
+With the help of context Api/Redux =
+We will make a store & directly passed the data whichever component needed.
+
+
+useReducer Hook Syntax =>
+const [state, dispatch] = useReducer(reducer, initial_value); 
+in reducer we had state & action.
