@@ -1,8 +1,20 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import { removeUsers } from '../store/slices/UserSlice'
+// import { clearAllUsers } from ''
 
 const DeleteAllUser = () => {
+  const dispatch = useDispatch();
+
+  const deleteAllUsers = () => {
+    dispatch(removeUsers())
+  };
+
   return (
-    <div>DeleteAllUser</div>
+    <>
+      <button onClick={() => deleteAllUsers()}>Delete All Users</button>
+    </>
   )
 }
 
