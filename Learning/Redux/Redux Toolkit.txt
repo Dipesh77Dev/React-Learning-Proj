@@ -3,6 +3,7 @@ If we want to implement Redux in our project se we can use Redux toolkit(@reduxj
 Redux Toolkit is an updated version of Redux.
 Redux Toolkit(also known as RTK) is used for writing Redux Logic[Redux which take 100 line of code can be decreased to 40-50 line by using redux toolkit].
 Redux Toolkit simplifies our code & eliminates many common Redux mistakes & bugs. 
+Redux toolkit is easy & can be written in less line.
 
 
 When we work on big project we have to deal with state management, for state management we have -
@@ -19,3 +20,47 @@ We will make a store & directly passed the data whichever component needed.
 useReducer Hook Syntax =>
 const [state, dispatch] = useReducer(reducer, initial_value); 
 in reducer we had state & action.
+
+
+Why Redux Toolkit =>
+1. While in redux we had to create action function, reducer function differently & important i.e action type, but in redux toolkit we can do in single file only & action type is creating by own only.
+2. Configuring a redux store is complicated.
+3. We had to install lots of packages to get Redux to do anything useful.
+4. Redux require too much boilerplate code.
+
+
+We will create an user & delete an user.
+
+
+Main terms -
+createSlice, configureStore, actionCreators, createAction, useDispatch, useSelector.. 
+
+
+With Vite -
+npm create vite; 
+give any project name; then package-name => package.json; React-framework; variant - JS.
+
+npm install
+npm run dev
+
+npm i @reduxjs/toolkit;
+npm i redux react-redux;
+
+
+Slices in RTK =>
+It is a function which accepts a slice name, an initial state & object of reducer functions, & automatically generates action creators for us & action types that correspond to reducers & state.
+
+We use createSlice method which is given by redux toolkit, or 
+it is a function which accepts objects, (in objects 1st property is name - sliceName, 2nd property is initialState which is empty array, 3rd property is object of reducer function)
+
+
+eg. const UserSlice = createSlice({
+    name: 'user',
+    initialState: [],
+    reducers: {
+        addUser: (state,action) => {},
+        removeUser: (state,action) => {}
+    }
+})
+
+The main globalized store is distributed in small pieces of slice.
