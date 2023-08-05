@@ -1,0 +1,13 @@
+/* Navbar */
+
+.navbar{
+    display: flex;
+}
+
+ul{
+    flex-direction: row;
+}
+
+li{
+    text-decoration: none;
+}

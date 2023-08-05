@@ -1,0 +1,190 @@
+If we want to implement Redux in our project se we can use Redux toolkit(@reduxjs/toolkit package), rather than using legacy redux.
+
+Redux Toolkit is an updated version of Redux.
+Redux Toolkit(also known as RTK) is used for writing Redux Logic[Redux which take 100 line of code can be decreased to 40-50 line by using redux toolkit].
+Redux Toolkit simplifies our code & eliminates many common Redux mistakes & bugs. 
+Redux toolkit is easy & can be written in less line.
+
+
+When we work on big project we have to deal with state management, for state management we have -
+1. Hooks( ContextApi, useReducer); 2. Redux; 3. Redux toolkit.
+
+
+For eg(According to props drilling 1 image) -
+If we want to pass data from grandparent to GChild-2 = we had to pass props/data from Grandparent => Parent => child => G-child2..
+
+With the help of context Api/Redux =
+We will make a store & directly passed the data whichever component needed.
+
+
+useReducer Hook Syntax =>
+const [state, dispatch] = useReducer(reducer, initial_value); 
+in reducer we had state & action.
+
+
+Why Redux Toolkit =>
+1. While in redux we had to create action function, reducer function differently & important i.e action type, but in redux toolkit we can do in single file only & action type is creating by own only.
+2. Configuring a redux store is complicated.
+3. We had to install lots of packages to get Redux to do anything useful.
+4. Redux require too much boilerplate code.
+
+
+We will create an user & delete an user.
+
+
+Main terms -
+createSlice, configureStore, actionCreators, createAction, useDispatch, useSelector.. 
+
+
+With Vite -
+npm create vite; 
+give any project name; then package-name => package.json; React-framework; variant - JS.
+
+npm install
+npm run dev
+
+npm i @reduxjs/toolkit;
+npm i redux react-redux;
+
+
+1] Slices in RTK =>
+It is a function which accepts a slice name, an initial state & object of reducer functions, & automatically generates action creators for us & action types that correspond to reducers & state.
+
+We use createSlice method which is given by redux toolkit, or 
+it is a function which accepts objects, (in objects 1st property is name - sliceName, 2nd property is initialState which is empty array, 3rd property is object of reducer function)
+
+
+eg. const UserSlice = createSlice({
+    name: 'user',
+    initialState: [],
+    reducers: {
+        addUser (state,action) {},
+        removeUser (state,action) {}
+    }
+})
+
+The main globalized store is distributed in small pieces of slice.
+In our app what are the functionality which are connected to each other & connected part we can keep them in seperate, so keeping in separate is nothing but an slice in redux toolkit. 
+No convention for creating slice file, we can use pascalCase, or camelCase.
+
+When we had to show data or store data best way is using array for storing data & displaying by calling with multiple methods.
+
+reducers - contain micro-reducers or functions, We don't need to write action type & check action type by using switch, we will not do bcoz redux toolkit gives us automatically.
+
+After reducer we had lot like - extraReducers, createActions, for getting the addUser (state,action) {}, ... , etc.
+
+
+2] Create Store =>
+We can easily create store by using function - configureStore.
+configureStore accepts a single configuration object parameters. [we will had only 1 object in that we had reducer, middleware, devTools, preloadedState, enhancers, etc].
+
+eg.
+const store = configureStore({
+    reducer: {
+        users: UserSlice
+    }
+})
+If we had only single function, it will directly used as root reducer for store.
+If it is an object of slice reducers like {users: userReducer, posts: postReducer}, configureStore will automatically create root reducer by passing the objects to Redux combineReducer utility.
+
+So when we do any action in UI - it come to this store bcoz store is saving our state/data then it goes in reducer to check when we clicked something which slice we are using, then it goes to the particular slice in which our reducer function had been defined (eg. reducer {
+    addUser(state, action){ logic we will write }
+}).
+
+
+To check actionCreators - console.log(<slicename>.actions)
+eg. console.log(UserSlice.actions)
+
+
+For viewing redux in chrome =>
+1.Adding Redux DevTools extension to our browser (Google Chrome)
+2.Installing Dependencies for Redux DevTools & Adding Redux DevTools to your store
+3.Visualizing your states and actions in Redux DevTools Console.
+
+Setting up Redux DevTools <==>
+npm install  -save-dev redux-devtools-extension
+
+import { composeWithDevTools } from ‘redux-devtools-extension’;
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+const store = createStore(rootReducer, composeWithDevTools());
+
+render(
+ <Provider store={store}>
+    <App />
+  </Provider>
+)
+
+Setting up Redux DevTools in a store with middleware <==>
+npm redux react-redux redux-promise — save
+
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from "redux";
+import ReduxPromise from "redux-promise";
+
+const store = createStore(rootReducer,  applyMiddleware(ReduxPromise));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+
+
+npm install -g react-devtools
+
+For connecting react with redux we use react-redux package(bridge between react & redux).
+1. we should had provider which we will provide to our whole app & package is coming from react-redux.
+2. We can pass any value to provider Or
+pass the created store to provider.
+
+
+We can provide this in store to use redux devtool for that particular app =>
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
+
+
+For fake data use - "chance" package..
+https://chancejs.com/
+
+
+From this we can get data but we had to store that data in our store/update in our store -
+1. useDispatch from 'react-redux' [It is used to trigger the action/ to call particular redux function]
+2. actionCreators.
+
+Redux toolkit use immur means no worries of state mutability.
+for eg if we use Array.push method - mutates(modify) original array &add elements to the end of array, returns new length of an array.
+
+For getting the data/states data we use useSelctor -
+import { useSelector } from 'react-redux'
+const data1 = useSelector((state) => state.users) [(state) => state.<reducer name in store>];
+state is nothing but its complete store data & we can access/modify comple store data by this state.
+
+When we write state in userSlice it means that state is for particular userSlice states, but when we write in useReducer state it means complete whole applications state.
+
+state.splice(action.payload, 1)
+[splice means it had 2 params - 1(what element to delete), 2(how much to delete)].
+
+
+Delete all things -
+1. Normal redux toolkit; 2. extraReducer; 3. createAction.
+
+Extra reducer - it comes when we had to pass same functionality/logic for one function reducers but in different slices.
+If action is supposed to be handled by 1 reducer - use reducers,
+If action is supposed to be handled by multiple reducers - use extraReducers.
+
+extraReducer we can go with object or function.
+extraReducer(builder){
+    builder.addCase(userSlice.actions.clearAllUsers, () => { return []; })
+} 
+by default parameters - builder, we had addCase method.
+
+We had one drawback by using extraReducer that is -
+If we by mistakely delete our main slice/base of that slice & using the reference of slice in extraReducer so we will get error - that this type had not found;
+So to overcome the drawback for extraReducer we had create action function.
+function createAction(type, prepareAction?)
+
+We had to create extraReducer in every slices.
+extraReducer is dependent on our main slice.
+actionReducer we had to create & pass in extraReducer but its an independent from our main slice.
